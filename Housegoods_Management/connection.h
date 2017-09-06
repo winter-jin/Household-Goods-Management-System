@@ -42,8 +42,6 @@ static bool createConnection()
     }
     else
         qDebug()<<"database open success!";
-    QSqlQuery query(db);
-    query.exec("select * from test");
 
     return true;
 }

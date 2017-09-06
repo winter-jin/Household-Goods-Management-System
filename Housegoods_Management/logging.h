@@ -2,7 +2,8 @@
 #define LOGGING_H
 
 #include <QFrame>
-
+#include <QSqlTableModel>
+#include <mainwindow.h>
 namespace Ui {
 class Logging;
 }
@@ -15,8 +16,13 @@ public:
     explicit Logging(QWidget *parent = 0);
     ~Logging();
 
+private slots:
+    void on_pushButton_1_clicked();
+
 private:
+    QSqlTableModel *model;
     Ui::Logging *ui;
+    MainWindow *mainWindow;
 };
 
 #endif // LOGGING_H

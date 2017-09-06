@@ -10,7 +10,8 @@ int main(int argc, char *argv[])
     if(!createConnection())
         return 1;
 
-    Logging
+    //Logging w1;
+    //w1.show();
 
     MainWindow w;
     w.show();
