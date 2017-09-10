@@ -35,6 +35,9 @@ private slots:
     void on_pushButton_7_clicked();
     void on_pushButton_8_clicked();
 
+//private slots:
+   // void receivelogin();//与login中发射的信号关联的槽函数
+
 private:
     Ui::MainWindow *ui;
     QSqlTableModel *model;

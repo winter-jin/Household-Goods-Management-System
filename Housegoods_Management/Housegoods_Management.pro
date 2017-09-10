@@ -24,15 +24,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        main.cpp \
         mainwindow.cpp \
-    logging.cpp
+    logging.cpp \
+    widget.cpp
 
 HEADERS += \
         mainwindow.h \
     connection.h \
-    logging.h
+    logging.h \
+    widget.h
 
-FORMS += \
-        mainwindow.ui \
-    logging.ui
+FORMS +=
+
+DISTFILES +=
+
+CONFIG += debug
+CONFIG += release

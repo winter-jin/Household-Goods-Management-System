@@ -28,6 +28,7 @@ Logging::~Logging()
 
 void Logging::on_pushButton_1_clicked()
 {
+
     QString name = ui->lineEdit->text();
     QString password = ui->lineEdit_2->text();
     model->setTable("users");   //重新关联表

@@ -12,7 +12,9 @@
 #include <QTableView>
 #include "mainwindow.h"
 #include <QHBoxLayout>
-
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
 
 static bool createConnection()
 {
@@ -30,9 +32,9 @@ static bool createConnection()
     QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
     qDebug()<<"ODBC driver?"<<db.isValid();
     QString dsn = QString::fromLocal8Bit("test");
-    db.setHostName("Alienware");
+    db.setHostName("(local)");
     db.setDatabaseName(dsn);
-    db.setUserName("Jin");
+    db.setUserName("test");
     db.setPassword("qwer1234");
     if(!db.open())
     {

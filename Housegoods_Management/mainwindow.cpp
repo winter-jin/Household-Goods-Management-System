@@ -25,6 +25,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+//void MainWindow::receivelogin()//新加
+//{
+ //   this->show();
+//}
+
 void MainWindow::on_pushButton_1_clicked()
 {
     QString name = ui->lineEdit_2->text();
