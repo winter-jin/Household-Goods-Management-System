@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     model = new QSqlTableModel(this);
+    qr = new QR;
     model->setTable("student");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
     model->select(); //选取整个表的所有行
@@ -100,5 +101,11 @@ void MainWindow::on_pushButton_8_clicked()
     QString name = ui->lineEdit->text();
     model->setTable("groups");   //重新关联表
     model->select();   //这样才能再次显示整个表的内容
+}
+
+void MainWindow::on_pushButton_9_clicked()
+{
+    qr->show();
+    this->hide();
 }
 

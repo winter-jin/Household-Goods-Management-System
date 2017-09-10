@@ -2,6 +2,8 @@
 #include "logging.h"
 #include <QApplication>
 #include "connection.h"
+#include <QZXing.h>
+#include <iostream>
 
 int main(int argc, char *argv[])
 {
@@ -10,11 +12,12 @@ int main(int argc, char *argv[])
     if(!createConnection())
         return 1;
 
-    //Logging w1;
-    //w1.show();
+    Logging w1;
+    w1.show();
 
     MainWindow w;
     w.show();
+
 
     return a.exec();
 }

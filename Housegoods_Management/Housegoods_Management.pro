@@ -6,6 +6,9 @@
 
 QT       += core gui
 QT       += sql
+
+include(QZXing/QZXing.pri)
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Housegoods_Management
@@ -24,15 +27,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        main.cpp \
         mainwindow.cpp \
-    logging.cpp
+    logging.cpp \
+    main.cpp \
+    qr.cpp
 
 HEADERS += \
         mainwindow.h \
     connection.h \
-    logging.h
+    logging.h \
+    qr.h
 
 FORMS += \
         mainwindow.ui \
-    logging.ui
+    logging.ui \
+    qr.ui
