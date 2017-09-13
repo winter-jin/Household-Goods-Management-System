@@ -11,14 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     model->setTable("student");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
     model->select(); //选取整个表的所有行
-
-    //不显示name属性列,如果这时添加记录，则该属性的值添加不上
-    // model->removeColumn(1);
-
     ui->tableView->setModel(model);
-
-    //使其不可编辑
-    // ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 MainWindow::~MainWindow()
@@ -45,10 +38,7 @@ void MainWindow::on_pushButton_2_clicked()
 void MainWindow::on_pushButton_3_clicked()
 {
     int rowNum = model->rowCount(); //获得表的行数
-    //int id = 10;
     model->insertRow(rowNum); //添加一行
-    //model->setData(model->index(rowNum,0),id);
-    //model->submitAll(); //可以直接提交
 }
 
 void MainWindow::on_pushButton_4_clicked()
@@ -69,10 +59,8 @@ void MainWindow::on_pushButton_5_clicked()
 {
     //获取选中的行
     int curRow = ui->tableView->currentIndex().row();
-
     //删除该行
     model->removeRow(curRow);
-
     int ok = QMessageBox::warning(this,tr("删除当前行!"),
                                   tr("你确定删除当前行吗？"),
                                   QMessageBox::Yes,QMessageBox::No);

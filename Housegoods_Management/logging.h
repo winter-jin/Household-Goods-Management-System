@@ -4,6 +4,7 @@
 #include <QFrame>
 #include <QSqlTableModel>
 #include <mainwindow.h>
+
 namespace Ui {
 class Logging;
 }

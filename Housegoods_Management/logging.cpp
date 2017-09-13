@@ -1,5 +1,6 @@
 #include "logging.h"
 #include "ui_logging.h"
+#include "connection.h"
 
 Logging::Logging(QWidget *parent) :
     QFrame(parent),
@@ -28,13 +29,23 @@ Logging::~Logging()
 
 void Logging::on_pushButton_1_clicked()
 {
+    //int flag =0
     QString name = ui->lineEdit->text();
     QString password = ui->lineEdit_2->text();
-    model->setTable("users");   //重新关联表
-    model->setFilter(QString("user_name ='%1' and user_password = '%2'").arg(name).arg(password));
-    if(model)
+    QString sql = "SELECT * FROM users WHERE user_name='" + name + "'";
+    QSqlQuery query(sql);
+    while (query.next())
     {
-        mainWindow->show();
-        this->hide();
+        qDebug() << QString("Id:, Username: %1, Password: %2")
+                        .arg(query.value("user_name").toString())
+                        .arg(query.value("user_password").toString());
+        QString na = query.value(1).toString();
+        qDebug()<<na;
+        qDebug()<<password;
+        if(na==password)
+        {
+            mainWindow->show();
+            this->hide();
+        }
     }
 }

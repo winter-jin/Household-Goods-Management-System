@@ -15,8 +15,8 @@ int main(int argc, char *argv[])
     Logging w1;
     w1.show();
 
-    MainWindow w;
-    w.show();
+    //MainWindow w;
+    //w.show();
 
 
     return a.exec();

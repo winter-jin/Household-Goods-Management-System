@@ -36,7 +36,8 @@ HEADERS += \
         mainwindow.h \
     connection.h \
     logging.h \
-    qr.h
+    qr.h \
+    control.h
 
 FORMS += \
         mainwindow.ui \

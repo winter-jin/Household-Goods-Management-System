@@ -1,5 +1,8 @@
+#pragma once
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+
+#include "qr.h"
 #include <QApplication>
 #include <QDialog>
 #include <QSqlDatabase>
@@ -9,10 +12,8 @@
 #include <QtSql>
 #include <QSqlQuery>
 #include <QTableView>
-#include "mainwindow.h"
 #include <QHBoxLayout>
 #include <QMainWindow>
-#include <qr.h>
 
 namespace Ui {
 class MainWindow;
