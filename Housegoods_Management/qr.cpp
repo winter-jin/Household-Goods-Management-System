@@ -9,11 +9,22 @@ QR::QR(QWidget *parent) :
 {
     ui->setupUi(this);
     model = new QSqlTableModel(this);
+    camera = new QCamera(this);
+    viewfinder=new QCameraViewfinder(this);
+    imageCapture=new QCameraImageCapture(camera);
     //mainWindow = new MainWindow;
     model->setTable("student");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
     model->select(); //选取整个表的所有行
     ui->tableView->setModel(model);
+    ui->ImageView->addWidget(viewfinder);
+    ui->ImageCapture->setScaledContents(true);
+    camera->setViewfinder(viewfinder);
+    camera->start();
+    connect(imageCapture, SIGNAL(imageCaptured(int,QImage)), this, SLOT(displayImage(int,QImage)));
+    connect(ui->buttonCapture, SIGNAL(clicked()), this, SLOT(captureImage()));
+    connect(ui->buttonSave, SIGNAL(clicked()), this, SLOT(saveImage()));
+    //connect(ui->buttonQuit, SIGNAL(clicked()), qApp, SLOT(quit()));
 }
 
 QR::~QR()
@@ -104,4 +115,31 @@ void QR::on_pushButton_6_clicked()
     mainWindow2 = new MainWindow;
     mainWindow2->show();
     this->hide();
+}
+
+void QR::captureImage()
+{
+    //ui->statusBar->showMessage(tr("capturing..."), 1000);
+    imageCapture->capture();
+    //ui->ImageView->setPixmap(imageCapture);
+}
+
+void QR::displayImage(int , QImage image)
+{
+    ui->ImageCapture->setPixmap(QPixmap::fromImage(image));
+    //ui->statusBar->showMessage(tr("capture OK!"), 5000);
+}
+
+void QR::saveImage()
+{
+QString fileName=QFileDialog::getSaveFileName(this, tr("save file"), QDir::homePath(), tr("jpegfile(*.jpg)"));
+if(fileName.isEmpty()) {
+//ui->statusBar->showMessage(tr("save cancel"), 5000);
+return;
+}
+const QPixmap* pixmap=ui->ImageCapture->pixmap();
+if(pixmap) {
+pixmap->save(fileName);
+//ui->statusBar->showMessage(tr("save OK"), 5000);
+}
 }

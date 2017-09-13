@@ -7,10 +7,32 @@
 #include <QMessageBox>
 #include <QtSql>
 #include <QSqlQuery>
+#include <QMainWindow>
+#include <QCamera>
+#include <QCameraViewfinder>
+#include <QCameraImageCapture>
+#include <QFileDialog>
+#include <opencv2/opencv.hpp>
+#include <qtimer>
+#include <QImage>
+#include <QPixmap>
+
+
+#include <QMainWindow>
+#include <QCamera>
+#include <QCameraViewfinder>
+#include <QCameraImageCapture>
+#include <QFileDialog>
+
+using namespace cv;
 
 namespace Ui {
 class QR;
 }
+
+class QCamera;
+class QCameraViewfinder;
+class QCameraImageCapture;
 
 class QR : public QFrame
 {
@@ -23,6 +45,9 @@ private slots:
     void on_pushButton_4_clicked();
     void on_pushButton_5_clicked();
     void on_pushButton_6_clicked();
+    void captureImage();
+    void displayImage(int,QImage);
+    void saveImage();
 
 public:
     explicit QR(QWidget *parent = 0);
@@ -31,6 +56,10 @@ public:
 private:
     Ui::QR *ui;
     QSqlTableModel *model;
+
+    QCamera *camera;
+    QCameraViewfinder *viewfinder;
+    QCameraImageCapture *imageCapture;
 };
 
 #endif // QR_H

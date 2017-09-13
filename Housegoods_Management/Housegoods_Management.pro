@@ -6,6 +6,8 @@
 
 QT       += core gui
 QT       += sql
+QT       +=multimedia
+QT       +=multimediawidgets
 
 include(QZXing/QZXing.pri)
 
@@ -13,6 +15,12 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Housegoods_Management
 TEMPLATE = app
+
+INCLUDEPATH+=D:/opencv_QT/include\
+             D:/opencv_QT/include/opencv\
+             D:/opencv_QT/include/opencv2
+
+LIBS += -L D:/opencv_QT/lib/libopencv_*310.dll.a
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked as deprecated (the exact warnings
